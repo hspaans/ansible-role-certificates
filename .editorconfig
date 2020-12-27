@@ -10,7 +10,6 @@ trim_trailing_whitespace = true
 
 [*.md]
 trim_trailing_spaces = false
-max_line_length = 80
 
 [*.yml]
 indent_style = space
