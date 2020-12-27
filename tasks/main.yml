@@ -1,2 +1,56 @@
 ---
-# tasks file for template
+- name: Gather OS specific variables for Nagios
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution|lower }}-{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution|lower }}.yml"
+
+- name: Create directory for private certs
+  file:
+    path: "{{ certificates_path }}/private/{{ item.name }}"
+    state: directory
+    owner: "{{ certificates_owner | default('root') }}"
+    group: "{{ certificates_group | default('root') }}"
+    mode: "{{ item.mode | default('0755') }}"
+  with_items:
+    - "{{ certificates_private }}"
+
+- name: Copy cert.pem
+  copy:
+    content: "{{ item.cert | default('==') }}"
+    dest: "{{ certificates_path }}/private/{{ item.name }}/cert.pem"
+    owner: "{{ certificates_owner | default('root') }}"
+    group: "{{ certificates_group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+  with_items:
+    - "{{ certificates_private }}"
+
+- name: Copy chain.pem
+  copy:
+    content: "{{ item.chain | default('==') }}"
+    dest: "{{ certificates_path }}/private/{{ item.name }}/chain.pem"
+    owner: "{{ certificates_owner | default('root') }}"
+    group: "{{ certificates_group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+  with_items:
+    - "{{ certificates_private }}"
+
+- name: Copy fullchain.pem
+  copy:
+    content: "{{ item.fullchain | default('==') }}"
+    dest: "{{ certificates_path }}/private/{{ item.name }}/fullchain.pem"
+    owner: "{{ certificates_owner | default('root') }}"
+    group: "{{ certificates_group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+  with_items:
+    - "{{ certificates_private }}"
+
+- name: Copy privkey.pem
+  copy:
+    content: "{{ item.privkey | default('==') }}"
+    dest: "{{ certificates_path }}/private/{{ item.name }}/privkey.pem"
+    owner: "{{ certificates_owner | default('root') }}"
+    group: "{{ certificates_group | default('root') }}"
+    mode: "{{ item.mode | default('0600') }}"
+  with_items:
+    - "{{ certificates_private }}"
