@@ -1,0 +1,22 @@
+---
+name: Release to Ansible Galaxy
+
+on:
+  push:
+    tags:
+      - "v*"
+  schedule:
+    - cron: "5 6 7 * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Release Ansible Role to Galaxy
+        uses: hspaans/ansible-galaxy-action@v0.2.2
+        with:
+          api_key: ${{ secrets.galaxy_api_key }}
