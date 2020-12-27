@@ -1,6 +1,6 @@
 # Role Name
 
-A brief description of the role goes here.
+Push X.509 certificates to servers and using the structure from certbot for deployment.
 
 ## Requirements
 
@@ -17,8 +17,36 @@ No dependency on other Ansible Galaxy roles.
 ## Example Playbook
 
     - hosts: servers
+      vars:
+        certificates_private:
+          - name: www.example.org
+            cert: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              62663162646531663532611139313861653138656136313135385312643435613463623438633837
+            chain: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              62663162646531663532611139313861653138656136313135385312643435613463623438633837
+            fullchain: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              62663162646531663532611139313861653138656136313135385312643435613463623438633837
+            privkey: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              62663162646531663532611139313861653138656136313135385312643435613463623438633837
+          - name: mail.example.org
+            cert: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              62663162646531663532611139313861653138656136313135385312643435613463623438633837
+            chain: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              62663162646531663532611139313861653138656136313135385312643435613463623438633837
+            fullchain: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              62663162646531663532611139313861653138656136313135385312643435613463623438633837
+            privkey: !vault |
+              $ANSIBLE_VAULT;1.1;AES256
+              62663162646531663532611139313861653138656136313135385312643435613463623438633837
       roles:
-        - { role: username.rolename, x: 42 }
+        - { role: hspaans.certificates }
 
 ## License
 
