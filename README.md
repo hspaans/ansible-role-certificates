@@ -46,7 +46,7 @@ No dependency on other Ansible Galaxy roles.
               $ANSIBLE_VAULT;1.1;AES256
               62663162646531663532611139313861653138656136313135385312643435613463623438633837
       roles:
-        - { role: hspaans.certificates }
+        - { role: hspaans.certificates, become: true }
 
 ## License
 
