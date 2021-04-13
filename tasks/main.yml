@@ -14,6 +14,7 @@
     mode: "{{ item.mode | default('0755') }}"
   with_items:
     - "{{ certificates_private }}"
+  no_log: true
 
 - name: Copy cert.pem
   copy:
@@ -24,6 +25,7 @@
     mode: "{{ item.mode | default('0644') }}"
   with_items:
     - "{{ certificates_private }}"
+  no_log: true
 
 - name: Copy chain.pem
   copy:
@@ -34,6 +36,7 @@
     mode: "{{ item.mode | default('0644') }}"
   with_items:
     - "{{ certificates_private }}"
+  no_log: true
 
 - name: Copy fullchain.pem
   copy:
@@ -44,6 +47,7 @@
     mode: "{{ item.mode | default('0644') }}"
   with_items:
     - "{{ certificates_private }}"
+  no_log: true
 
 - name: Copy privkey.pem
   copy:
@@ -54,3 +58,4 @@
     mode: "{{ item.mode | default('0600') }}"
   with_items:
     - "{{ certificates_private }}"
+  no_log: true
