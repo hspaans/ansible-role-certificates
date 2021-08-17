@@ -21,7 +21,7 @@
     mode: "{{ item.mode | default('0755') }}"
   with_items:
     - "{{ certificates_private }}"
-  # no_log: true
+  no_log: true
 
 - name: Copy cert.pem
   copy:

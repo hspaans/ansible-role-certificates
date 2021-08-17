@@ -16,4 +16,14 @@ def test_directory_present(host, directory):
     """Test if directory is present."""
     item = host.file(directory)
 
-    assert item.is_directory
+    assert item.exists
+
+
+@pytest.mark.parametrize("file", ["/etc/ssl/private/www.example.org"])
+def test_file_present(host, file):
+    """Test if directory is present."""
+    item_certs = host.file(file+"/certs.pem")
+    item_chain = host.file(file+"/chain.pem")
+
+    assert item_certs.exists
+    assert item_chain.exists
