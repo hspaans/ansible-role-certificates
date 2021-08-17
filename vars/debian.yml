@@ -1,4 +1,4 @@
 ---
 certificates_path: /etc/ssl
-certificates_owner: root
-certificates_group: ssl-cert
+# certificates_owner: root
+# certificates_group: ssl-cert

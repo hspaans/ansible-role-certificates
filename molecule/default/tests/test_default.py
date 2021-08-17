@@ -11,9 +11,9 @@ def test_pkg_installed(host, pkg):
     assert package.is_installed
 
 
-@pytest.mark.parametrize("directory", ["/etc/ssl/private"])
+@pytest.mark.parametrize("directory", ["/etc/ssl/private", "/etc/ssl/private/www.example.org"])
 def test_directory_present(host, directory):
     """Test if directory is present."""
-    dir = host.file(directory)
+    item = host.file(directory)
 
-    assert dir.exists
+    assert item.is_directory

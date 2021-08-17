@@ -69,7 +69,8 @@ provisioner:
   name: ansible
   inventory:
     group_vars:
-      certificates_private:
-        - name: www.example.org
+      all:
+        certificates_private:
+          - name: www.example.org
 verifier:
   name: testinfra

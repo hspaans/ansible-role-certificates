@@ -1,4 +1,0 @@
----
-certificates_path: /etc/pki/tls
-certificates_owner: root
-certificates_group: root
