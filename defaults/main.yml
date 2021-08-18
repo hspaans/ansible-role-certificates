@@ -1,2 +1,4 @@
 ---
 certificates_private: []
+certificates_owner: root
+certificates_group: root
