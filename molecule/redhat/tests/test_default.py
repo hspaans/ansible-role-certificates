@@ -11,7 +11,10 @@ def test_pkg_installed(host, pkg):
     assert package.is_installed
 
 
-@pytest.mark.parametrize("directory", ["/etc/pki/tls/private", "/etc/pki/tls/private/www.example.org"])
+@pytest.mark.parametrize("directory",                         [
+    "/etc/pki/tls/private",
+    "/etc/pki/tls/private/www.example.org"
+])
 def test_directory_present(host, directory):
     """Test if directory is present."""
     item = host.file(directory)
@@ -19,11 +22,14 @@ def test_directory_present(host, directory):
     assert item.exists
 
 
-@pytest.mark.parametrize("directory", ["/etc/pki/tls/private/www.example.org"])
-def test_file_present(host, directory):
+@pytest.mark.parametrize("directory, file", [
+    ("/etc/pki/tls/private/www.example.org", "cert.pem"),
+    ("/etc/pki/tls/private/www.example.org", "chain.pem"),
+    ("/etc/pki/tls/private/www.example.org", "fullchain.pem"),
+    ("/etc/pki/tls/private/www.example.org", "privkey.pem")
+])
+def test_file_present(host, directory, file):
     """Test if directory is present."""
-    item_certs = host.file(file+"/certs.pem")
-    item_chain = host.file(file+"/chain.pem")
+    item = host.file(directory+"/"+file)
 
-    assert item_certs.exists
-    assert item_chain.exists
+    assert item.exists
