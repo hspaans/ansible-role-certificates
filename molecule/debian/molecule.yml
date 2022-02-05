@@ -15,6 +15,9 @@ platforms:
   - name: debian-10
     image: "ghcr.io/hspaans/molecule-container-debian:10"
     command: ""
+    tmpfs:
+      - /run
+      - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
@@ -22,6 +25,9 @@ platforms:
   - name: debian-11
     image: "ghcr.io/hspaans/molecule-container-debian:11"
     command: ""
+    tmpfs:
+      - /run
+      - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
@@ -29,6 +35,9 @@ platforms:
   - name: debian-12
     image: "ghcr.io/hspaans/molecule-container-debian:12"
     command: ""
+    tmpfs:
+      - /run
+      - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
