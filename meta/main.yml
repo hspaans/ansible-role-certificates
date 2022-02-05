@@ -15,8 +15,9 @@ galaxy_info:
         - 8
     - name: Debian
       versions:
-        - stretch
         - buster
+        - bullseye
+        - bookworm
     - name: Ubuntu
       versions:
         - bionic
