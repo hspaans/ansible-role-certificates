@@ -2,4 +2,4 @@
 - name: Converge
   hosts: all
   roles:
-    - role: hspaans.certificates
+    - role: ansible-role-certificates
