@@ -6,7 +6,7 @@ galaxy_info:
 
   license: MIT
 
-  min_ansible_version: 4.0.0
+  min_ansible_version: 7.0.0
 
   platforms:
     - name: Debian
@@ -16,7 +16,6 @@ galaxy_info:
         - bookworm
     - name: Ubuntu
       versions:
-        - bionic
         - focal
         - jammy
 
