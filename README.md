@@ -1,5 +1,8 @@
 # Role Name
 
+> [!WARNING]
+> As manual certificates have been replaced by [Let's Encrypt](https://github.com/letsencrypt) and this role has been archived.
+
 Push X.509 certificates to servers and using the structure from certbot for deployment.
 
 ## Requirements
